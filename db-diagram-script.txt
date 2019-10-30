@@ -1,0 +1,38 @@
+Table PRODUTO as P {
+  COD_PRODUTO INT [pk, increment] // auto-increment
+  NOME_PRODUTO VARCHAR(50) [not null]
+  COD_CATEGORIA INT [ref: > C.COD_CATEGORIA]
+}
+
+Table CATEGORIA as C {
+  COD_CATEGORIA INT [pk, increment] // auto-increment
+  NOME_CATEGORIA VARCHAR [not null]
+}
+
+Table CLIENTE as CL {
+  COD_CLIENTE INT [pk, increment] // auto-increment
+  NOME_CLIENTE VARCHAR(100)
+  CPF VARCHAR(11) [NOT NULL,UNIQUE]
+  EMAIL VARCHAR(30)
+}
+Table LOJA as L {
+  COD_LOJA INT [pk, increment] // auto-increment
+  NOME_LOJA VARCHAR(100)
+}
+
+Table FUNCIONARIO as F {
+  COD_FUNCIONARIO INT [pk, increment] // auto-increment
+  NOME_LOJA VARCHAR(100)
+  MATRIC    INT
+}
+
+Table VENDA as V {
+  COD_VENDA INT [pk, increment] // auto-increment
+  COD_CLIENTE INT [ref: > CL.COD_CLIENTE]
+  COD_LOJA INT [ref: > L.COD_LOJA]
+  COD_FUNCIONARIO INT [ref: > F.COD_FUNCIONARIO]
+  
+  //Ref: CL.COD_CLIENTE > V.COD_CLIENTE 
+  //Ref: merchants.country_code > countries.code
+
+}
